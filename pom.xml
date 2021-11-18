@@ -104,7 +104,7 @@
                     <systemProperties>
                         <property>
                             <name>allure.results.directory</name>
-                            <value>${project.build.directory}\allure-results</value>
+                            <value>${project.build.directory}/allure-results</value>
                         </property>
                     </systemProperties>
                 </configuration>
@@ -123,8 +123,6 @@
                 <version>2.10.0</version>
                 <configuration>
                     <reportVersion>2.8.0</reportVersion>
-                    <installDirectory>${project.build.directory}\allure-report</installDirectory>
-
                 </configuration>
             </plugin>
         </plugins>
