@@ -2,6 +2,6 @@
 *.iml
 *.class
 target
-allure-results
 logs
 build
+.allure
