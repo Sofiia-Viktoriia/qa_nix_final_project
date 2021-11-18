@@ -1,6 +1,7 @@
 package rozetka.logic.pages;
 
 import com.codeborne.selenide.Condition;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
@@ -11,6 +12,7 @@ public class SearchPage {
     private static final By firstItemImage = By.xpath("//rz-grid/ul/li[1]/app-goods-tile-default/div/div/a/img");
     private static final By searchTitle = By.xpath("//h1[@class='catalog-heading ng-star-inserted']");
 
+    @Step(value = "Check search items title equals {title}")
     public static void checkSearchTitle(String title) {
         $(firstItemImage).shouldBe(Condition.visible);
         Assert.assertEquals($(searchTitle).getText(), title);

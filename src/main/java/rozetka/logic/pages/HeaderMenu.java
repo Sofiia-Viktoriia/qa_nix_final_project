@@ -2,6 +2,7 @@ package rozetka.logic.pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
@@ -25,22 +26,26 @@ public class HeaderMenu {
     private static final By langButtonUA = By.xpath("/html/body/app-root/div/div/rz-header/header/div/div/ul/li[1]/rz-lang/ul/li[2]/a");
     private static final By registerButtonInAuthForm = By.xpath("//rz-user-identification/rz-auth/div/form/fieldset/div[5]/button[2]");
 
+    @Step(value = "Searching {input} via search input")
     public static void searchItem(String input) {
         $(searchInput).sendKeys(input);
         $(searchButton).click();
     }
 
+    @Step(value = "Click on logo")
     public static void returnToMainPage() {
         $(logoImage).shouldBe(Condition.visible).click();
         Assert.assertEquals(title(), "Интернет-магазин ROZETKA™: официальный сайт самого популярного онлайн-гипермаркета в Украине");
     }
 
+    @Step(value = "Opening auth form")
     public static void openAuthForm() {
         $(authButton).click();
         SelenideElement formTitle = $(authFormTitle).shouldBe(Condition.visible);
         Assert.assertEquals(formTitle.getText(), "Вход");
     }
 
+    @Step(value = "Check wrong email error with {email} input")
     public static void checkWrongEmailError(String email) {
         $(authEmailInput).sendKeys(email);
         $(authPasswordInput).click();
@@ -48,15 +53,18 @@ public class HeaderMenu {
         Assert.assertEquals(error.getText(), "Введен неверный адрес эл.почты или номер телефона");
     }
 
+    @Step(value = "Opening cart")
     public static void openCart() {
         $(cartButton).click();
         $(cartWindow).shouldBe(Condition.visible);
     }
 
+    @Step(value = "Checking cart is empty")
     public static void checkEmptyCart() {
         Assert.assertEquals($(cartWindowBodyTitle).getText(), "Корзина пуста");
     }
 
+    @Step(value = "Checking hiding password button")
     public static void checkPasswordToVisible() {
         SelenideElement passwordInput = $(authPasswordInput);
         passwordInput.sendKeys("test");
@@ -64,11 +72,13 @@ public class HeaderMenu {
         Assert.assertEquals(passwordInput.getAttribute("type"), "text");
     }
 
+    @Step(value = "Changing language to UA")
     public static void changeLangToUA() {
         $(langButtonUA).click();
         Assert.assertEquals($(searchInput).getAttribute("placeholder"), "Я шукаю...");
     }
 
+    @Step(value = "Opening register form from login form")
     public static void openRegisterForm() {
         openAuthForm();
         $(registerButtonInAuthForm).click();

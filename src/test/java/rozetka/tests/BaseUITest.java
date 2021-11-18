@@ -9,7 +9,8 @@ import org.testng.annotations.*;
 import static com.codeborne.selenide.Selenide.*;
 import static rozetka.utils.BrowserProvider.getBrowser;
 
-public class BaseTest {
+@Listeners(UIListener.class)
+public class BaseUITest {
 
     protected final int itemIndexToSelect = 0;
 

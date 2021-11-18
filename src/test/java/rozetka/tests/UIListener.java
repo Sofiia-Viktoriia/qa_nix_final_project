@@ -8,9 +8,9 @@ import org.testng.ITestResult ;
 
 import java.util.Arrays;
 
-public class TestListener implements ITestListener {
+public class UIListener implements ITestListener {
 
-    private static Logger LOG = LogManager.getLogger(TestListener.class.getName());
+    private static Logger LOG = LogManager.getLogger(UIListener.class.getName());
 
     @Override
     public void onTestStart(ITestResult result) {
@@ -25,7 +25,7 @@ public class TestListener implements ITestListener {
 
     @Override
     public void onTestFailure(ITestResult result) {
-        BaseTest baseTest = (BaseTest) result.getInstance();
+        BaseUITest baseTest = (BaseUITest) result.getInstance();
         LOG.info("test {} failed.", result.getName());
         baseTest.makeScreenshot();
     }

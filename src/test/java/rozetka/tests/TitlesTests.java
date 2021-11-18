@@ -1,13 +1,16 @@
 package rozetka.tests;
 
+import io.qameta.allure.Description;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import static rozetka.logic.pages.HeaderMenu.*;
 import static rozetka.logic.pages.ItemPage.*;
 import static rozetka.logic.pages.MainPage.*;
 import static rozetka.logic.pages.SearchPage.*;
 
-public class TitlesTests extends BaseTest {
+@Listeners(UIListener.class)
+public class TitlesTests extends BaseUITest {
 
     @DataProvider(name = "searchItemDataUA")
     public static Object[][] searchItemDataUA() {
@@ -56,24 +59,28 @@ public class TitlesTests extends BaseTest {
     }
 
     @Test
+    @Description(value = "Check if title presented on item page")
     public void checkItemTitlePresence() {
         selectItemByIndex(itemIndexToSelect);
         checkTitlePresence();
     }
 
     @Test(dataProvider = "searchItemData")
+    @Description(value = "Check if title of searched items is correct")
     public void checkSearchItemsTitle(String search, String title) {
         searchItem(search);
         checkSearchTitle(title);
     }
 
     @Test
+    @Description(value = "Check if buy button title is correct")
     public void checkBuyButtonTitle() {
         selectItemByIndex(itemIndexToSelect);
         checkTitleOfBuyButton();
     }
 
     @Test
+    @Description(value = "Check if buy button title is correct in UA")
     public void checkBuyButtonTitleInUA() {
         changeLangToUA();
         selectItemByIndex(itemIndexToSelect);
@@ -81,6 +88,7 @@ public class TitlesTests extends BaseTest {
     }
 
     @Test(dataProvider = "searchItemDataUA")
+    @Description(value = "Check if title of searched items is correct in UA")
     public void checkSearchTitleInUA(String search, String title) {
         searchItem(search);
         changeLangToUA();
@@ -88,12 +96,14 @@ public class TitlesTests extends BaseTest {
     }
 
     @Test(dataProvider = "itemMenuTitles")
+    @Description(value = "Check if titles of menu are correct on item page")
     public void checkItemMenuTitles(int optionIndex, String expectedTitle) {
         selectItemByIndex(itemIndexToSelect);
         checkItemMenuTitle(optionIndex, expectedTitle);
     }
 
     @Test(dataProvider = "itemMenuTitlesUA")
+    @Description(value = "Check if titles of menu are correct on item page in UA")
     public void checkItemMenuTitlesInUA(int optionIndex, String expectedTitle) {
         changeLangToUA();
         selectItemByIndex(itemIndexToSelect);
