@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="User Suite">
+
+    <test name="User tests">
+        <classes>
+            <class name="reqres.tests.UserTests"/>
+        </classes>
+    </test>
+    <listeners>
+        <listener class-name="reqres.tests.ApiListener"/>
+    </listeners>
+</suite>
