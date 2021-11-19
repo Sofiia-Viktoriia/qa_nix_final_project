@@ -3,9 +3,9 @@
 
 <suite name="Base Suite" verbose="1">
     <suite-files>
-        <suite-file path="authSuite"/>
+        <suite-file path="authSuite.xml"/>
         <suite-file path="userSuite.xml"/>
-        <suite-file path="headermenuSuite"/>
-        <suite-file path="titlesSuite"/>
+        <suite-file path="headermenuSuite.xml"/>
+        <suite-file path="titlesSuite.xml"/>
     </suite-files>
 </suite>
